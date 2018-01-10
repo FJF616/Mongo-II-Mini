@@ -14,7 +14,11 @@ const STATUS_USER_ERROR = 422;
 server.use(bodyParser.json());
 
 // Your API will be built out here.
-
+serer.get('/users', function(req, res) {
+  Person.find().then(function(users) {
+    res.status(200).json(users);
+  });
+});
 mongoose.Promise = global.Promise;
 const connect = mongoose.connect('mongodb://localhost/people', {
   useMongoClient: true
